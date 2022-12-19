@@ -3,16 +3,12 @@
 # Compare this snippet from application_organizer\application.py:
 # #!/bin/python3 python3
 # # -*- coding: utf-8 -*-
-# 
-# import openpyxl
-# 
-# # create a list of application instances
-# class Application
 
+import excel
 import openpyxl
 from application import Application
-from generate_excel import generate_excel
 
+#
 CRITICALITIES = ["High", "Medium", "Low"]
 AVAILABILITIES = ["99.9%", "99.5%", "99.0%", "98.0%", "95.0%"]
 BUSINESS_FUNCTIONS = ["Finance", "HR", "Marketing", "Sales", "Operations"]
@@ -134,3 +130,5 @@ def update_application():
 
 if __name__ == "__main__":
     main()
+
+

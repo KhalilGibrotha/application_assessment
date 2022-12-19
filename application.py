@@ -4,12 +4,41 @@
 import openpyxl
 
 # create a list of application instances
+def create_app():
+    # prompt the user for input
+    name = input("Enter the name of the application: ")
+    criticality = input("Enter the criticality of the application ({}): ".format(", ".join(CRITICALITIES)))
+    availability = input("Enter the availability of the application ({}): ".format(", ".join(AVAILABILITIES)))
+    number_of_users = input("Enter the number of users of the application: ")
+    business_function = input("Enter the business function of the application ({}): ".format(", ".join(BUSINESS_FUNCTIONS)))
+    environments = input("Enter the environments of the application ({}): ".format(", ".join(ENVIRONMENTS)))
+    servers = input("Enter the number of servers of the application: ")
+    memory = input("Enter the memory of the application: ")
+    storage = input("Enter the storage of the application: ")
+    database = input("Enter the database of the application ({}): ".format(", ".join(DATABASES)))
+    operating_system = input("Enter the operating system of the application ({}): ".format(", ".join(OPERATING_SYSTEMS)))
+    programming_language = input("Enter the programming language of the application ({}): ".format(", ".join(PROGRAMMING_LANGUAGES)))
+    framework = input("Enter the framework of the application ({}): ".format(", ".join(FRAMEWORKS)))
+    version_control = input("Enter the version control of the application ({}): ".format(", ".join(VERSION_CONTROL)))
+    deployment = input("Enter the deployment of the application ({}): ".format(", ".join(DEPLOYMENT)))
+    monitoring = input("Enter the monitoring of the application ({}): ".format(", ".join(MONITORING)))
+    logging = input("Enter the logging of the application ({}): ".format(", ".join(LOGGING)))
+    security_zones = input("Enter the security zones of the application ({}): ".format(", ".join(SECURITY_ZONES)))
+    backup = input("Enter the backup of the application ({}): ".format(", ".join(BACKUP)))
+    disaster_recovery = input("Enter the disaster recovery of the application ({}): ".format(", ".join(DISASTER_RECOVERY)))
+    cost = input("Enter the cost of the application: ")
+    revenue = input("Enter the revenue of the application: ")
+    profit = input("Enter the profit of the application: ")
+    notes = input("Enter any notes about the application: ")
+
+
 class Application:
-    def __init__(self, name, criticality, availability, number_of_users, business_function, environments, servers, memory, storage, database, operating_system, programming_language, framework, version_control, deployment, monitoring, logging, security_zones, backup, disaster_recovery, cost, revenue, profit, notes):
+    def __init__(self, name, criticality, availability, number_of_users, business_owners, business_function, environments, servers, memory, storage, database, operating_system, programming_language, framework, version_control, deployment, monitoring, logging, security_zones, backup, disaster_recovery, cost, revenue, profit, notes):
         self.name = name
         self.criticality = criticality
         self.availability = availability
         self.number_of_users = number_of_users
+        self.business_owners = business_owners
         self.business_function = business_function
         self.environments = environments
         self.servers = servers
@@ -30,6 +59,7 @@ class Application:
         self.revenue = revenue
         self.profit = profit
         self.notes = notes
+
     
     # write the application data to the excel spreadsheet
     def write_to_excel(self, ws, row_num):
@@ -57,3 +87,22 @@ class Application:
         ws.cell(row=row_num, column=22).value = self.revenue
         ws.cell(row=row_num, column=23).value = self.profit
         ws.cell(row=row_num, column=24).value = self.notes
+
+if __name__ == "__main__":
+    # open the excel spreadsheet
+    wb = openpyxl.load_workbook('applications.xlsx')
+    ws = wb.active
+
+    # create a list of application instances
+    applications = []
+
+    # read the excel spreadsheet and create the application instances
+    for row in ws.iter_rows(min_row=2, max_col=24, values_only=True):
+        applications.append(Application(*row))
+
+    # write the application instances to the excel spreadsheet
+    for i, application in enumerate(applications):
+        application.write_to_excel(ws, i+2)
+
+    # save the excel spreadsheet
+    wb.save('applications.xlsx')
