@@ -6,5 +6,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="openai" />
+    <orderEntry type="module" module-name="openai-quickstart-python" />
+    <orderEntry type="module" module-name="learning_exercises" />
   </component>
 </module>

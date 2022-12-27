@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/applicationAssessment.iml" filepath="$PROJECT_DIR$/.idea/applicationAssessment.iml" />
+      <module fileurl="file://E:/Code/learning_exercises/.idea/learning_exercises.iml" filepath="E:/Code/learning_exercises/.idea/learning_exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../openai/.idea/openai.iml" filepath="$PROJECT_DIR$/../openai/.idea/openai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../openai-quickstart-python/.idea/openai-quickstart-python.iml" filepath="$PROJECT_DIR$/../openai-quickstart-python/.idea/openai-quickstart-python.iml" />
     </modules>
   </component>
 </project>
