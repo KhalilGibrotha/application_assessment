@@ -3,3 +3,5 @@
 /shodan.py
 /ignored
 /output_inventory.csv
+globals.py
+*.pyc
